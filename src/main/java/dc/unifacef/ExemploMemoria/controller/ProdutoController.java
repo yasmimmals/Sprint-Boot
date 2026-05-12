@@ -33,4 +33,14 @@ public class ProdutoController {
         return ResponseEntity.created(uri).body(novo);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> remove(@PathVariable Long id){
+       if(service.remove(id)){
+           return ResponseEntity.noContent().build(); // removeu
+       }
+       else{
+           return  ResponseEntity.notFound().build();
+       }
+    }
+
 }
